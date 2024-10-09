@@ -53,9 +53,9 @@ def expense_amount(category):
     """
     while True:
         try:
-            expense_amount = int(input("Please enter your expense amount. "))
+            expense_update = int(input("Please enter your expense amount. "))
             cursor_et.execute('''UPDATE expense_tracking SET expense=?
-                                WHERE expense_category=?''', (expense_amount,
+                                WHERE expense_category=?''', (expense_update,
                                                               category))
             break
         except ValueError:
@@ -131,9 +131,9 @@ def income_amount(category):
     """
     while True:
         try:
-            income_amount = int(input("Please enter your income amount. "))
+            income_update = int(input("Please enter your income amount. "))
             cursor_it.execute('''UPDATE income_tracking SET income=?
-                                WHERE income_category=?''', (income_amount,
+                                WHERE income_category=?''', (income_update,
                                                              category))
             break
         except ValueError:
@@ -300,9 +300,9 @@ def budget_amount(category):
         category (str): The current category being viewed.
     """
     while True:
-        budget_amount = input("Please enter your budget amount. ")
+        budget_update = input("Please enter your budget amount. ")
         cursor_bt.execute('''UPDATE budget_tracking SET budget=?
-                            WHERE budget_category=?''', (budget_amount,
+                            WHERE budget_category=?''', (budget_update,
                                                          category))
         break
     bt.commit()
@@ -451,11 +451,11 @@ def goal_progress(goal):
 
 
 # set up of sqlite3 for all 3 database
-bt = sqlite3.connect('L3T08/budget_tracking.db')
+bt = sqlite3.connect('budget_tracking.db')
 cursor_bt = bt.cursor()
-et = sqlite3.connect('L3T08/expense_tracking.db')
+et = sqlite3.connect('expense_tracking.db')
 cursor_et = et.cursor()
-it = sqlite3.connect('L3T08/income_tracking.db')
+it = sqlite3.connect('income_tracking.db')
 cursor_it = it.cursor()
 
 
